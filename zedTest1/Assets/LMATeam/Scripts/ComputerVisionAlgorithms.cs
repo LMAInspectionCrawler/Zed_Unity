@@ -91,6 +91,10 @@ public class ComputerVisionAlgorithms : MonoBehaviour {
     /// </summary>
     private RenderTexture ColorTextureCopy = null;
 
+    /// <summary>
+    /// Toggle between Depth and RGB Data
+    /// </summary>
+    public bool togglermcjoggler = false;
 
 
     void Start()
@@ -132,6 +136,7 @@ public class ComputerVisionAlgorithms : MonoBehaviour {
             //this 2D color texture from zed but has no usuable color values until
             //it is passed into the GPU. Then a Unity shader can correct it into BGRA32
             colorTexture = zed.CreateTextureImageType(sl.VIEW.LEFT);
+            XYZTexture = zed.CreateTextureMeasureType(sl.MEASURE.XYZ);
 
             //if our GPU is hungry
             if (ColorTextureCopy == null)
@@ -140,7 +145,13 @@ public class ComputerVisionAlgorithms : MonoBehaviour {
                 ColorTextureCopy = new RenderTexture(colorTexture.width, colorTexture.height, 0, RenderTextureFormat.ARGB32);
             }
 
+            if (XYZTextureCopy == null)
+            {
+                XYZTextureCopy = new RenderTexture(XYZTexture.width, XYZTexture.height, 0, RenderTextureFormat.ARGBFloat);
+            }
+
             //feed the GPU a colortexture from the CPU *nom nom nom nom*
+            Graphics.Blit(XYZTexture, XYZTextureCopy);
             Graphics.Blit(colorTexture, ColorTextureCopy);
 
             //make sure we found our material and loaded it. 
@@ -148,9 +159,17 @@ public class ComputerVisionAlgorithms : MonoBehaviour {
             {
                 //set our materials main texture to the rgb values stored in the GPU
                 m.SetTexture("_ColorTex", ColorTextureCopy);
+                m.SetTexture("_XYZTex", XYZTextureCopy);
 
                 //Get the GPU corrected pixel data and store it into a 2D texture
-                tex = GetRTPixels(ColorTextureCopy);
+                if (togglermcjoggler)
+                {
+                    tex = GetRTPixels(XYZTextureCopy);
+                }
+                else
+                {
+                    tex = GetRTPixels(ColorTextureCopy);
+                }
 
                 //Apply those values to the 2D texture
                 tex.Apply();
