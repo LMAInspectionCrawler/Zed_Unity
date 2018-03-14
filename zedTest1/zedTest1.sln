@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2017
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "zedTest1", "zedTest1.csproj", "{DA3209BD-CB0B-6C0D-3710-8AEE2ACFDF74}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "zedTest1.Editor", "zedTest1.Editor.csproj", "{F707E6FA-9C06-E085-7269-0B1DEB3F082E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DA3209BD-CB0B-6C0D-3710-8AEE2ACFDF74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA3209BD-CB0B-6C0D-3710-8AEE2ACFDF74}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA3209BD-CB0B-6C0D-3710-8AEE2ACFDF74}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA3209BD-CB0B-6C0D-3710-8AEE2ACFDF74}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F707E6FA-9C06-E085-7269-0B1DEB3F082E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F707E6FA-9C06-E085-7269-0B1DEB3F082E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F707E6FA-9C06-E085-7269-0B1DEB3F082E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F707E6FA-9C06-E085-7269-0B1DEB3F082E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
